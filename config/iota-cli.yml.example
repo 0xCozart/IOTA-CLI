@@ -3,6 +3,9 @@
 
 iota-cli:
 
+### Database file path
+# db_file: ~/.iota-cli/db_json
+
 ### Toggle application level debug (does not toggle framework debugging)
 # debug: false
 
@@ -21,8 +24,6 @@ iota-cli:
 ### The output handler label
 # output_handler: jinja2
 
-### sample foo option
-# foo: bar
 
 
 log.colorlog:

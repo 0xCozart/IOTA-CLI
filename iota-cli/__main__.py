@@ -3,11 +3,28 @@ from cement import App, TestApp, init_defaults
 from cement.core.exc import CaughtSignal
 from .core.exc import MyAppError
 from .controllers.base import Base
+from cement.utils import fs
+from tinydb import TinyDB
+import os
 
 # configuration defaults
 CONFIG = init_defaults('iota-cli')
-CONFIG['iota-cli']['foo'] = 'bar'
+CONFIG['iota-cli']['db_file'] = '~/.todo/db.json'
 
+def extend_tinydb(app):
+    app.log.info('extending iota-cli application with tinydb')
+    db_file = app.config.get('iota-cli', 'db_file')
+
+    # ensure that we expand the full path
+    db_file = fs.abspath(db_file)
+    app.login.info('tinydb database file is: %s' % db_file)
+
+    # ensure our parent directory exists
+    db_dir = os.path.dirname(db_file)
+    if not os.path.exists(db_dir):
+        os.makedirs(db_dir)
+
+    app.extend('db', TinyDB(db_file))
 
 class MyApp(App):
     """Iota Cli App primary application."""
@@ -43,6 +60,11 @@ class MyApp(App):
         # register handlers
         handlers = [
             Base
+        ]
+
+        # hooks
+        hooks = [
+            ('post_setup', extend_tinydb),
         ]
 
 
