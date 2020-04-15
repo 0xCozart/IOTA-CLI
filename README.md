@@ -24,9 +24,9 @@ $ make virtualenv
 $ source env/bin/activate
 
 
-### run iota-cli cli application
+### run IotaCli cli application
 
-$ iota-cli --help
+$ IotaCli --help
 
 
 ### run pytest / coverage
@@ -65,5 +65,5 @@ and can be built with the included `make` helper:
 ```
 $ make docker
 
-$ docker run -it iota-cli --help
+$ docker run -it IotaCli --help
 ```

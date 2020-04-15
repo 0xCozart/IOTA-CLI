@@ -1,29 +1,34 @@
 ### Iota Cli App Configuration Settings
 ---
 
-iota-cli:
+IotaCli:
 
 ### Database file path
-# db_file: ~/.iota-cli/db_json
+db_file: ~/.IotaCli/db.json
 
 ### Toggle application level debug (does not toggle framework debugging)
-# debug: false
+debug: false
 
 ### Where external (third-party) plugins are loaded from
-# plugin_dir: /var/lib/iota-cli/plugins/
+plugin_dir: /var/lib/IotaCli/plugins/
 
 ### Where all plugin configurations are loaded from
-# plugin_config_dir: /etc/iota-cli/plugins.d/
+plugin_config_dir: /etc/IotaCli/plugins.d/
 
 ### Where external templates are loaded from
-# template_dir: /var/lib/iota-cli/templates/
+template_dir: /var/lib/IotaCli/templates/
 
 ### The log handler label
-# log_handler: colorlog
+log_handler: colorlog
 
 ### The output handler label
-# output_handler: jinja2
+output_handler: jinja2
 
+### Email 
+email: alanvega002@gmail.com
+
+### Email handler changed from default (dummy) to smtp
+mail_handler: smtp
 
 
 log.colorlog:
@@ -32,16 +37,16 @@ log.colorlog:
 # file: null
 
 ### The level for which to log.  One of: info, warning, error, fatal, debug
-# level: info
+level: info
 
 ### Whether or not to log to console
-# to_console: true
+to_console: true
 
 ### Whether or not to rotate the log file when it reaches `max_bytes`
-# rotate: false
+rotate: false
 
 ### Max size in bytes that a log file can grow until it is rotated.
-# max_bytes: 512000
+max_bytes: 512000
 
 ### The maximun number of log files to maintain when rotating
-# max_files: 4
+max_files: 4

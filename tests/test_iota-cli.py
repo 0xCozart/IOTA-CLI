@@ -1,15 +1,16 @@
-
+from iota import Iota
 from pytest import raises
-from iota-cli.main import MyAppTest
+from IotaCli.main import MyAppTest
+import pprint
 
-def test_iota-cli():
-    # test iota-cli without any subcommands or arguments
+def test_IotaCli():
+    # test IotaCli without any subcommands or arguments
     with MyAppTest() as app:
         app.run()
         assert app.exit_code == 0
 
 
-def test_iota-cli_debug():
+def test_IotaCli_debug():
     # test that debug mode is functional
     argv = ['--debug']
     with MyAppTest(argv=argv) as app:
@@ -34,3 +35,11 @@ def test_command1():
         data,output = app.last_rendered
         assert data['foo'] == 'not-bar'
         assert output.find('Foo => not-bar')
+
+
+def test_connect_api():
+    argv = ['connect']
+    with MyAppTest(argv=argv) as app:
+        app.run()
+        data, output = app.last_rendered
+        assert data[]

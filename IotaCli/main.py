@@ -3,34 +3,34 @@ from cement import App, TestApp, init_defaults
 from cement.core.exc import CaughtSignal
 from .core.exc import MyAppError
 from .controllers.base import Base
+from .controllers.items import Items
 from cement.utils import fs
 from tinydb import TinyDB
 import os
 
 # configuration defaults
-CONFIG = init_defaults('iota-cli')
-CONFIG['iota-cli']['db_file'] = '~/.todo/db.json'
+CONFIG = init_defaults('IotaCli')
 
-def extend_tinydb(app):
-    app.log.info('extending iota-cli application with tinydb')
-    db_file = app.config.get('iota-cli', 'db_file')
+# def extend_tinydb(app):
+#     app.log.info('extending IotaCli application with tinydb')
+#     db_file = app.config.get('IotaCli', 'db_file')
 
-    # ensure that we expand the full path
-    db_file = fs.abspath(db_file)
-    app.login.info('tinydb database file is: %s' % db_file)
+#     # ensure that we expand the full path
+#     db_file = fs.abspath(db_file)
+#     app.log.info('tinydb database file is: %s' % db_file)
 
-    # ensure our parent directory exists
-    db_dir = os.path.dirname(db_file)
-    if not os.path.exists(db_dir):
-        os.makedirs(db_dir)
+#     # ensure our parent directory exists
+#     db_dir = os.path.dirname(db_file)
+#     if not os.path.exists(db_dir):
+#         os.makedirs(db_dir)
 
-    app.extend('db', TinyDB(db_file))
+#     app.extend('db', TinyDB(db_file))
 
 class MyApp(App):
     """Iota Cli App primary application."""
 
     class Meta:
-        label = 'iota-cli'
+        label = 'IotaCli'
 
         # configuration defaults
         config_defaults = CONFIG
@@ -59,7 +59,8 @@ class MyApp(App):
 
         # register handlers
         handlers = [
-            Base
+            Base,
+            Items,
         ]
 
         # hooks
@@ -72,7 +73,7 @@ class MyAppTest(TestApp,MyApp):
     """A sub-class of MyApp that is better suited for testing."""
 
     class Meta:
-        label = 'iota-cli'
+        label = 'IotaCli'
 
 
 def main():

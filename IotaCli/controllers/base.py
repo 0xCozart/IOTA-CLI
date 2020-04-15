@@ -17,9 +17,9 @@ class Base(Controller):
         description = 'CLI application to hold and transfer IOTA tokens.'
 
         # text displayed at the bottom of --help output
-        epilog = 'Usage: iota-cli command1 --foo bar'
+        epilog = 'Usage: IotaCli command1 --foo bar'
 
-        # controller level arguments. ex: 'iota-cli --version'
+        # controller level arguments. ex: 'IotaCli --version'
         arguments = [
             ### add a version banner
             ( [ '-v', '--version' ],
@@ -37,7 +37,7 @@ class Base(Controller):
     @ex(
         help='example sub command1',
 
-        # sub-command level arguments. ex: 'iota-cli command1 --foo bar'
+        # sub-command level arguments. ex: 'IotaCli command1 --foo bar'
         arguments=[
             ### add a sample foo option under subcommand namespace
             ( [ '-f', '--foo' ],

@@ -4,7 +4,7 @@ clean:
 	find . -name '*.py[co]' -delete
 
 virtualenv:
-	virtualenv --prompt '|> iota-cli <| ' env
+	virtualenv --prompt '|> IotaCli <| ' env
 	env/bin/pip install -r requirements-dev.txt
 	env/bin/python setup.py develop
 	@echo
@@ -14,13 +14,13 @@ virtualenv:
 test:
 	python -m pytest \
 		-v \
-		--cov=iota-cli \
+		--cov=IotaCli \
 		--cov-report=term \
 		--cov-report=html:coverage-report \
 		tests/
 
 docker: clean
-	docker build -t iota-cli:latest .
+	docker build -t IotaCli:latest .
 
 dist: clean
 	rm -rf dist/*

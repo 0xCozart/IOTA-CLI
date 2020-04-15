@@ -1,6 +1,6 @@
 
 from setuptools import setup, find_packages
-from iota-cli.core.version import get_version
+from IotaCli.core.version import get_version
 
 VERSION = get_version()
 
@@ -9,20 +9,20 @@ LONG_DESCRIPTION = f.read()
 f.close()
 
 setup(
-    name='iota-cli',
+    name='IotaCli',
     version=VERSION,
-    description='CLI application to hold and transfer IOTA tokens.',
+    description='CLI messaging application on the IOTA tangle',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
     author='Alan Vega',
     author_email='alanvega002@gmail.com',
-    url='https://github.com/AlanVegaDecentralize/IOTA-CLI.git',
+    url='https://github.com/AlanVegaDecentralize/IotaCli.git',
     license='MIT',
     packages=find_packages(exclude=['ez_setup', 'tests*']),
-    package_data={'iota-cli': ['templates/*']},
+    package_data={'IotaCli': ['templates/*']},
     include_package_data=True,
     entry_points="""
         [console_scripts]
-        iota-cli = iota-cli.main:main
+        IotaCli = IotaCli.main:main
     """,
 )
