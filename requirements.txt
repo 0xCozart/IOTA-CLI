@@ -17,7 +17,7 @@ filelock==3.0.12
 idna==2.8
 IotaCli==0.0.1
 jeepney==0.4.3
-Jinja2==2.11.2
+Jinja2==2.11.3
 keyring==21.2.0
 libusb1==1.7.1
 MarkupSafe==1.1.1
